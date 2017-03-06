@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="">
+      <title>Application</title>
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/static/css/bootstrap-reset.css" rel="stylesheet">
+      <link href="/static/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+      <link href="/static/css/style.css" rel="stylesheet">
+      <link href="/static/css/style-responsive.css" rel="stylesheet" />
+      <!--[if lt IE 9]>
+      <script src="/static/js/html5shiv.js"></script>
+      <script src="/static/js/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body class="login-body">
+      <div class="container">
+         <form class="form-signin" action="/login" method="post">
+            <h2 class="form-signin-heading">PANEL GİRİŞ</h2>
+            <div class="login-wrap">
+               {% if error %}
+               <br>
+               <div class="alert alert-danger">{{ error }}</div>
+               {% endif %}
+               {% if form.errors %}
+               {% for error in form.errors %}
+               <div class="alert alert-danger" style="margin-bottom:5px;">{{ form.errors[error][0] }}</div>
+               {%endfor%}
+               <div style="height:15px;"></div>
+               {% endif %}
+               <input type="text" name="email" class="form-control" placeholder="E-Mail Adresiniz" autofocus required>
+               <input type="password" name="password" class="form-control" placeholder="Şifreniz" required>
+               <label class="checkbox">
+               <input type="checkbox" value="remember-me"> Beni Hatırla
+               <span class="pull-right">
+               <a href="#"> Şifremi Unuttum</a>
+               </span>
+               </label>
+               <button class="btn btn-lg btn-login btn-block" type="submit">GİRİŞ YAP</button>
+               <div class="registration">
+                  Eğer bir hesabınız yoksa.
+                  <a class="" href="/register">Hesap Oluştur</a>
+               </div>
+            </div>
+         </form>
+      </div>
+      <script src="/static/js/jquery.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+   </body>
+</html>
