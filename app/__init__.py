@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -15,3 +16,9 @@ app.register_blueprint(auth)
 
 if __name__ == '__main__':
     app.run()
+
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('error.html'), 404

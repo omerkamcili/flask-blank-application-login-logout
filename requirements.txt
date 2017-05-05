@@ -1,0 +1,4 @@
+wtforms
+flask
+flask-sqlalchemy
+mysqlclient
