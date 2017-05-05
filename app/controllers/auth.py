@@ -17,14 +17,13 @@ def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
         if 'user' in session:
-            #print(session['user'])
             return f(*args, **kwargs)
         else:
             return redirect(url_for('auth.login'))
     return wrap
 
 
-@module.route('/login', methods=['POST'])
+@module.route('/login', methods=['POST','GET'])
 def login():
     form = LoginForm(request.form, csrf_enabled=False)
     if form.validate_on_submit():
@@ -32,7 +31,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         user = User.query.filter_by(email=email).first()
-        #print(generate_password_hash('123456'))
+        print(generate_password_hash('aaAA123456'))
         if user and check_password_hash(user.password, password):
             session['user'] = user.id
             return redirect(url_for('default.default'))
