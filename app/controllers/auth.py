@@ -31,7 +31,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         user = User.query.filter_by(email=email).first()
-        print(generate_password_hash('aaAA123456'))
+        #print(generate_password_hash('aaAA123456'))
         if user and check_password_hash(user.password, password):
             session['user'] = user.id
             return redirect(url_for('default.default'))
